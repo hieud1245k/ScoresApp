@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "136401607599",
+    "firebase_url": "https://scoresapp-15178.firebaseio.com",
+    "project_id": "scoresapp-15178",
+    "storage_bucket": "scoresapp-15178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136401607599:android:6eac09dec5506c2ae92d5a",
+        "android_client_info": {
+          "package_name": "com.hieuminh.scoresapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136401607599-qsbtjk9nbo0t1urfegjo7mrr5u6tpp54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbVySuO0Mnxbhe-jmWnVb1BcXQT1PHVdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136401607599-qsbtjk9nbo0t1urfegjo7mrr5u6tpp54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

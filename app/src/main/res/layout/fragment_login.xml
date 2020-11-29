@@ -25,7 +25,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Email"
             android:textColor="@color/cardview_light_background"
             android:textColorHint="@color/cardview_light_background" />
 
@@ -52,12 +52,14 @@
             android:padding="17dp">
 
             <Button
+                android:id="@+id/bt_adapter_registration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Register" />
 
             <Button
+                android:id="@+id/bt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

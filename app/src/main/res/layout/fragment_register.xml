@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFragment">
+    android:background="#CA6F52"
+    tools:context=".view.RegisterFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,19 +17,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="REGISTER"
             android:textAlignment="center"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#6FCF0F"
             android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Email"
             android:textColor="@color/cardview_light_background"
             android:textColorHint="@color/cardview_light_background" />
 
         <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -36,14 +39,15 @@
             android:textColor="@color/cardview_light_background"
             android:textColorHint="@color/cardview_light_background" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Forgot password?"
-            android:textSize="16dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/design_default_color_primary" />
+            android:hint="Confirm password"
+            android:inputType="textPassword"
+            android:textColor="@color/cardview_light_background"
+            android:textColorHint="@color/cardview_light_background" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,17 +55,18 @@
             android:padding="17dp">
 
             <Button
+                android:id="@+id/bt_adapter_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Back" />
+
+            <Button
+                android:id="@+id/bt_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Register" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Login" />
-
 
         </LinearLayout>
 
