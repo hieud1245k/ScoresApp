@@ -45,14 +45,26 @@
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_addFragment_to_viewResultFragment"
+            app:destination="@id/viewResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.hieuminh.scoresapp.RegisterFragment"
+        android:name="com.hieuminh.scoresapp.view.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewResultFragment"
+        android:name="com.hieuminh.scoresapp.view.ViewResultFragment"
+        android:label="fragment_view_result"
+        tools:layout="@layout/fragment_view_result" >
+        <action
+            android:id="@+id/action_viewResultFragment_to_addFragment"
+            app:destination="@id/addFragment" />
     </fragment>
 </navigation>
