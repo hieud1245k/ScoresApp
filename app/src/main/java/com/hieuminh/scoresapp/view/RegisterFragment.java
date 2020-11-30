@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.internal.au;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hieuminh.scoresapp.R;
@@ -42,11 +43,9 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapterLogin = view.findViewById(R.id.bt_adapter_login);
-        register = view.findViewById(R.id.bt_register);
-        et_email = view.findViewById(R.id.et_email);
-        et_password = view.findViewById(R.id.et_password);
-        et_confirmPassword = view.findViewById(R.id.et_confirm_password);
+        viewConnection(view);
+
+        auth = FirebaseAuth.getInstance();
 
         adapterLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,25 +58,45 @@ public class RegisterFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (et_password.toString().equals(et_confirmPassword.toString())) {
-                    registerUser(et_email.toString(), et_password.toString());
+                String email = et_email.getText().toString().trim();
+                String password = et_password.getText().toString().trim();
+                String confirmPassword = et_confirmPassword.getText().toString().trim();
+                if (password.equals(confirmPassword)) {
+                    registerUser(email, password,view);
+                    return;
                 }
             }
         });
     }
 
-    private void registerUser(String email, String password) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Activity) null,
-                new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            et_email.setText("Register successs");
-                        } else {
-                            et_email.setText("Register successs");
-                        }
-                    }
+    private void viewConnection(View view) {
+        adapterLogin = view.findViewById(R.id.bt_adapter_login);
+        register = view.findViewById(R.id.bt_register);
+        et_email = view.findViewById(R.id.et_email);
+        et_password = view.findViewById(R.id.et_password);
+        et_confirmPassword = view.findViewById(R.id.et_confirm_password);
+    }
 
-                });
+    private void registerUser(String email, String password, final View view) {
+        try {
+            auth.createUserWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                Toast.makeText(getActivity(),"Register successful!",Toast.LENGTH_SHORT).show();
+                                NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToListFragment();
+                                Navigation.findNavController(view).navigate(action);
+                            }
+                            else {
+                                Toast.makeText(getActivity(),"Register failed!",Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
 }
