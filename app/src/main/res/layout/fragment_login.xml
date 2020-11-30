@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CA6F52"
+    android:background="#F49F83"
     tools:context=".view.LoginFragment">
 
     <LinearLayout
@@ -23,6 +23,7 @@
             android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/tv_gmail_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -30,12 +31,21 @@
             android:textColorHint="@color/cardview_light_background" />
 
         <EditText
+            android:id="@+id/tv_password_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/cardview_light_background"
             android:textColorHint="@color/cardview_light_background" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#576EF1"
+            android:textStyle="bold"
+            android:text="Show Password"/>
 
         <TextView
             android:layout_width="wrap_content"
