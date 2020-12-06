@@ -25,8 +25,8 @@
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
         <action
-            android:id="@+id/action_listFragment_to_addFragment"
-            app:destination="@id/addFragment" />
+            android:id="@+id/action_listFragment_to_addInforFragment"
+            app:destination="@id/addInforFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -43,11 +43,11 @@
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action
-            android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
             android:id="@+id/action_addFragment_to_viewResultFragment"
             app:destination="@id/viewResultFragment" />
+        <action
+            android:id="@+id/action_addFragment_to_addInforFragment"
+            app:destination="@id/addInforFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_registerFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewResultFragment"
@@ -66,5 +69,20 @@
         <action
             android:id="@+id/action_viewResultFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_viewResultFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addInforFragment"
+        android:name="com.hieuminh.scoresapp.AddInforFragment"
+        android:label="fragment_add_infor"
+        tools:layout="@layout/fragment_add_infor" >
+        <action
+            android:id="@+id/action_addInforFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_addInforFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>
