@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "419121549476",
+    "firebase_url": "https://scoresapp-8095b.firebaseio.com",
+    "project_id": "scoresapp-8095b",
+    "storage_bucket": "scoresapp-8095b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419121549476:android:5c6ca7b98e32c6c9a3d631",
+        "android_client_info": {
+          "package_name": "com.hieuminh.scoresapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419121549476-04af8u65hntlvm0ek6u4b9ir60plt61f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hieuminh.scoresapp",
+            "certificate_hash": "34fcbfeb59921aa6a36b37aba73daecd8faa9bd2"
+          }
+        },
+        {
+          "client_id": "419121549476-u7bbl2bh4a88tss8lves1r3khlfi574c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0Yn0rLVskAoG_dxFH4BqfYg91HUu-IAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419121549476-u7bbl2bh4a88tss8lves1r3khlfi574c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

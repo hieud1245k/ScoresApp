@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_add_ui"
+    tools:context=".view.AddInforFragment">
+
+    <TextView
+        android:id="@+id/tv_title_add_infor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="ADD PLAYERS INFOR"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_add_infor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title_add_infor"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="88dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/tv_name_add_player_name_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:hint="Player name 1"
+            android:text="Hieu"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+        <EditText
+            android:id="@+id/tv_name_add_player_name_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:hint="Player name 2"
+            android:text="Phuc"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+        <EditText
+            android:id="@+id/tv_name_add_player_name_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:hint="Player name 3"
+            android:text="Nguyen"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+        <EditText
+            android:id="@+id/tv_name_add_player_name_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Player name 4"
+            android:text="Minh"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_add_infor"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bt_clean_add_infor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="58dp"
+            android:background="@drawable/btn_add_fr"
+            android:text="Clear"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/bt_next_add_infor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="58dp"
+            android:background="@drawable/btn_add_fr"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

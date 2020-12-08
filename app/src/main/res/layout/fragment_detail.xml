@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".view.DetailFragment">
+    android:stretchColumns="0,1,2,3"
+    tools:context=".view.DetailFragment"
+    android:background="#FB9908">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <TableRow>
 
-        <TextView
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Match" />
-
-        <TextView
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+        <Button
+            android:id="@+id/player1Show1"
+            android:enabled="false"
+            android:textColor="@android:color/black"
             android:text="Player 1" />
 
-        <TextView
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Player 1" />
+        <Button
+            android:id="@+id/player2Show2"
+            android:enabled="false"
+            android:textColor="@android:color/black"
+            android:text="Player 2"/>
+
+        <Button
+            android:id="@+id/player3Show3"
+            android:enabled="false"
+            android:textColor="@android:color/black"
+            android:text="Player 3"/>
+
+        <Button
+            android:id="@+id/player4Show4"
+            android:enabled="false"
+            android:textColor="@android:color/black"
+            android:text="Player 4"/>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tabModeScore">
 
         <TextView
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Player 1" />
+            android:id="@+id/score1"
+            android:textColor="#F8F5F5"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="0"/>
 
         <TextView
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Player 1" />
+            android:id="@+id/score2"
+            android:textColor="#F8F5F5"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="0"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/score3"
+            android:textColor="#F8F5F5"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="0"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_score_history"
+        <TextView
+            android:id="@+id/score4"
+            android:textColor="#F8F5F5"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="0"/>
+
+    </TableRow>
+
+    <ListView
+        android:id="@+id/scoreList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-</LinearLayout>
+</TableLayout>

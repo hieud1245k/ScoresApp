@@ -67,15 +67,17 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 String gmail = et_gmail.getText().toString();
                 String password = et_password.getText().toString();
-                if(gmail.matches("\\s+")) {
+                if(gmail.equals("")) {
                     Toast.makeText(getActivity(),"Gmail is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(password.matches("\\s+")) {
+                if(password.equals("")) {
                     Toast.makeText(getActivity(),"Password is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 AllowUserToLogin(gmail,password,view);
+//                NavDirections action = LoginFragmentDirections.actionLoginFragment2ToListFragment();
+//                Navigation.findNavController(view).navigate(action);
             }
         });
 

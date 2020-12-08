@@ -61,10 +61,26 @@ public class RegisterFragment extends Fragment {
                 String email = et_email.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
                 String confirmPassword = et_confirmPassword.getText().toString().trim();
-                if (password.equals(confirmPassword)) {
-                    registerUser(email, password,view);
+
+                if(email.equals("")) {
+                    Toast.makeText(getActivity(),"Gmail is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(password.equals("")) {
+                    Toast.makeText(getActivity(),"Password is not blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(confirmPassword.equals("")) {
+                    Toast.makeText(getActivity(),"Confirmation password is not blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!password.equals(confirmPassword)) {
+                    Toast.makeText(getActivity(),"Password and confirmation password do not match", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                registerUser(email, password,view);
             }
         });
     }

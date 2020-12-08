@@ -46,8 +46,8 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
         for(int i = 0; i < 4; i++) {
             holder.players[i].setText(record.players[i]);
         }
-        String h = (record.time.hour < 10)?("" + record.time.hour):(record.time.hour + "");
-        String m = (record.time.min < 10)?("" + record.time.min):(record.time.min + "");
+        String h = (record.startTime.hour < 10)?("" + record.startTime.hour):(record.startTime.hour + "");
+        String m = (record.startTime.min < 10)?("" + record.startTime.min):(record.startTime.min + "");
         holder.saveDate.setText(h + ":" + m);
 //        holder.dateHistory.setText(setTime(record.time));
     }

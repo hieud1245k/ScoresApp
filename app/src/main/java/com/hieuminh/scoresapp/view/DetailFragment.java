@@ -34,8 +34,5 @@ public class DetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rv_ScoreHistory = view.findViewById(R.id.rv_list_score_history);
-
-
     }
 }

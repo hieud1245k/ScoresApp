@@ -1,24 +1,22 @@
 package com.hieuminh.scoresapp.view;
 
-import android.icu.text.AlphabeticIndex;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.dapter.MyScoreAdapter;
 import com.hieuminh.scoresapp.model.Records;
@@ -45,6 +43,7 @@ public class ListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -70,7 +69,7 @@ public class ListFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections action = ListFragmentDirections.actionListFragmentToAddFragment();
+                NavDirections action = ListFragmentDirections.actionListFragmentToAddInforFragment();
                 Navigation.findNavController(view).navigate(action);
             }
         });
