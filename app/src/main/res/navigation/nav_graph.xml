@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_addFragment_to_addInforFragment"
             app:destination="@id/addInforFragment" />
+        <argument
+            android:name="record"
+            app:argType="com.hieuminh.scoresapp.model.Records" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -70,19 +73,33 @@
             android:id="@+id/action_viewResultFragment_to_addFragment"
             app:destination="@id/addFragment" />
         <action
-            android:id="@+id/action_viewResultFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            android:id="@+id/action_viewResultFragment_to_winFragment"
+            app:destination="@id/winFragment" />
+        <argument
+            android:name="record"
+            app:argType="com.hieuminh.scoresapp.model.Records" />
     </fragment>
     <fragment
         android:id="@+id/addInforFragment"
-        android:name="com.hieuminh.scoresapp.AddInforFragment"
+        android:name="com.hieuminh.scoresapp.view.AddInforFragment"
         android:label="fragment_add_infor"
         tools:layout="@layout/fragment_add_infor" >
         <action
             android:id="@+id/action_addInforFragment_to_addFragment"
             app:destination="@id/addFragment" />
+
         <action
             android:id="@+id/action_addInforFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/winFragment"
+        android:name="com.hieuminh.scoresapp.view.WinFragment"
+        android:label="fragment_win"
+        tools:layout="@layout/fragment_win" >
+        <action
+            android:id="@+id/action_winFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
 </navigation>

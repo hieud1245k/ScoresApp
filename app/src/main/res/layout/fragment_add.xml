@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DA9A3C"
+    android:background="@drawable/background_add_ui"
     android:orientation="vertical"
     tools:context=".view.AddFragment">
 
@@ -13,14 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Add Record"
+        android:text="Add Score"
+        android:textColor="#0DD317"
         android:textSize="40sp" />
 
     <TextView
-        android:layout_below="@id/tv_title"
-        android:id="@+id/tv_match"
+        android:id="@+id/tv_add_score_match"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:text="Match: 1"
@@ -43,50 +44,69 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/ll_add_score_0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8sp"
                 android:layout_weight="1"
                 android:background="@drawable/background_item_add_0"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_add_score_player_name_0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
+                    android:gravity="bottom"
+                    android:text="Player 1"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="30sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/tv_add_score_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Player1"
+                    android:text="3"
                     android:textAlignment="center"
                     android:textSize="30sp" />
 
-                <NumberPicker
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_add_score_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8sp"
                 android:layout_weight="1"
                 android:background="@drawable/background_item_add_1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_add_score_player_name_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
+                    android:gravity="bottom"
+                    android:text="Player 2"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="30sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/tv_add_score_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Player1"
+                    android:text="3"
                     android:textAlignment="center"
                     android:textSize="30sp" />
-
-                <NumberPicker
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2" />
 
             </LinearLayout>
 
@@ -98,94 +118,109 @@
             android:layout_weight="1">
 
             <LinearLayout
-                android:id="@+id/tt_scores_add"
+                android:id="@+id/ll_add_score_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8sp"
                 android:layout_weight="1"
                 android:background="@drawable/background_item_add_2"
-
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_add_score_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Player1"
+                    android:text="3"
                     android:textAlignment="center"
                     android:textSize="30sp" />
 
-                <NumberPicker
+                <TextView
+                    android:id="@+id/tv_add_score_player_name_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="2" />
+                    android:layout_weight="3"
+                    android:gravity="top"
+                    android:text="Player 4"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="30sp"
+                    tools:ignore="RtlCompat" />
+
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_add_score_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8sp"
                 android:layout_weight="1"
                 android:background="@drawable/background_item_add_3"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_add_score_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Player1"
+                    android:text="3"
                     android:textAlignment="center"
                     android:textSize="30sp" />
 
-                <NumberPicker
+                <TextView
+                    android:id="@+id/tv_add_score_player_name_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="2" />
+                    android:layout_weight="3"
+                    android:gravity="top"
+                    android:text="Player 3"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="30sp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-
-
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/ll_score_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll_score_add"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/bt_save_and_continues"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:text="Save"
-            android:textColor="#FFF"
-            android:textAllCaps="false"
-            android:background="@drawable/btn_add_fr"
-            android:textSize="22sp"
+            android:id="@+id/bt_add_score_reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_fr"
+            android:text="Reset"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="22sp" />
 
         <Button
-            android:id="@+id/bt_save_and_back"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:text="Save and Views"
-            android:textColor="#FFF"
-            android:textAllCaps="false"
-            android:background="@drawable/btn_add_fr"
-            android:textSize="22sp"
+            android:id="@+id/bt_add_score_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_fr"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="22sp" />
 
     </LinearLayout>
 

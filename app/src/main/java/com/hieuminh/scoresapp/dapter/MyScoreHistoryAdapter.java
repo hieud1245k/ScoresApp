@@ -31,7 +31,7 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
     public void onBindViewHolder(@NonNull MyScoreHistoryHolder holder, int position) {
         MatchScores matchScore = matchScores.get(position);
         for(int i = 0; i < 4 ; i++) {
-            holder.playersScore[i].setText(matchScore.scoreList[i]);
+            holder.playersScore[i].setText(matchScore.marks[i]);
         }
         holder.match.setText(matchScore.id);
     }

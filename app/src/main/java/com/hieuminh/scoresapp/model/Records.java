@@ -4,13 +4,14 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class Records {
+public class Records implements Serializable {
 
     public int matchTotal = 16;
 
@@ -20,5 +21,7 @@ public class Records {
 
     public Map<Integer, Integer> playersMap = new HashMap<>();
 
-    public Time time = new Time();
+    public Time startTime = new Time();
+
+    public Time endTime;
 }
