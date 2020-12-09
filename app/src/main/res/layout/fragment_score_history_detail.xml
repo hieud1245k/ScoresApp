@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:stretchColumns="0,1,2,3"
-    tools:context=".view.DetailFragment"
+    tools:context=".view.ScoreHistoryDetailFragment"
     android:background="#FB9908">
 
     <TableRow>

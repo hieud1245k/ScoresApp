@@ -30,9 +30,9 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.hieuminh.scoresapp.view.DetailFragment"
+        android:name="com.hieuminh.scoresapp.view.ScoreHistoryDetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_score_history_detail" >
         <action
             android:id="@+id/action_detailFragment_to_listFragment"
             app:destination="@id/listFragment" />
@@ -72,12 +72,12 @@
         <action
             android:id="@+id/action_viewResultFragment_to_addFragment"
             app:destination="@id/addFragment" />
-        <action
-            android:id="@+id/action_viewResultFragment_to_winFragment"
-            app:destination="@id/winFragment" />
         <argument
             android:name="record"
             app:argType="com.hieuminh.scoresapp.model.Records" />
+        <action
+            android:id="@+id/action_viewResultFragment_to_countDownFragment"
+            app:destination="@id/countDownFragment" />
     </fragment>
     <fragment
         android:id="@+id/addInforFragment"
@@ -101,5 +101,17 @@
         <action
             android:id="@+id/action_winFragment_to_listFragment"
             app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countDownFragment"
+        android:name="com.hieuminh.scoresapp.CountDownFragment"
+        android:label="fragment_count_down"
+        tools:layout="@layout/fragment_count_down" >
+        <action
+            android:id="@+id/action_countDownFragment_to_winFragment"
+            app:destination="@id/winFragment" />
+        <action
+            android:id="@+id/action_countDownFragment_to_viewResultFragment"
+            app:destination="@id/viewResultFragment" />
     </fragment>
 </navigation>
