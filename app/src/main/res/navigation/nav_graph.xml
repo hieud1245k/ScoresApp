@@ -101,10 +101,13 @@
         <action
             android:id="@+id/action_winFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="record"
+            app:argType="com.hieuminh.scoresapp.model.Records" />
     </fragment>
     <fragment
         android:id="@+id/countDownFragment"
-        android:name="com.hieuminh.scoresapp.CountDownFragment"
+        android:name="com.hieuminh.scoresapp.view.CountDownFragment"
         android:label="fragment_count_down"
         tools:layout="@layout/fragment_count_down" >
         <action
@@ -113,5 +116,8 @@
         <action
             android:id="@+id/action_countDownFragment_to_viewResultFragment"
             app:destination="@id/viewResultFragment" />
+        <argument
+            android:name="record"
+            app:argType="com.hieuminh.scoresapp.model.Records" />
     </fragment>
 </navigation>

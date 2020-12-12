@@ -54,7 +54,7 @@ public class ViewResultFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewConnection(view);
         if (getArguments() != null) {
-            AddFragmentArgs args = AddFragmentArgs.fromBundle(getArguments());
+            ViewResultFragmentArgs args = ViewResultFragmentArgs.fromBundle(getArguments());
             record = args.getRecord();
         }
 
@@ -82,7 +82,8 @@ public class ViewResultFragment extends Fragment {
             b.setMessage("Are you sure that you want to end game?");
             b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-
+                    NavDirections action = ViewResultFragmentDirections.actionViewResultFragmentToCountDownFragment(record);
+                    Navigation.findNavController(getView()).navigate(action);
                 }
             });
             b.setNegativeButton("No", new DialogInterface.OnClickListener() {

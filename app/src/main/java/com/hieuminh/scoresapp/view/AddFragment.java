@@ -16,6 +16,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -35,8 +37,10 @@ public class AddFragment extends Fragment {
     private TextView match;
     private Records record;
     private LinearLayout ll_add_scores[] = new LinearLayout[4];
+    private LinearLayout ll_add_score_feature;
     private TextView playersScore[] = new TextView[4];
     private List<Integer> indexs = new ArrayList<>();
+    private Animation topAnim, bottomAnim, rightAnim, leftAnim;
 
     private int mark = 3;
 
@@ -58,6 +62,7 @@ public class AddFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mark = 3;
         viewConnection(view);
+        animation();
         if (getArguments() != null) {
             AddFragmentArgs args = AddFragmentArgs.fromBundle(getArguments());
             record = args.getRecord();
@@ -86,6 +91,7 @@ public class AddFragment extends Fragment {
         ll_add_scores[3] = view.findViewById(R.id.ll_add_score_3);
 
         match = view.findViewById(R.id.tv_add_score_match);
+        ll_add_score_feature = view.findViewById(R.id.ll_add_score_feature);
 
         save = view.findViewById(R.id.bt_add_score_save);
         reset = view.findViewById(R.id.bt_add_score_reset);
@@ -127,6 +133,19 @@ public class AddFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public void animation() {
+        topAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.top_animation);
+        leftAnim = AnimationUtils.loadAnimation(getActivity() , R.anim.left_animation);
+        rightAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.right_animation);
+        bottomAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_animation);
+
+        ll_add_scores[0].setAnimation(leftAnim);
+        ll_add_scores[3].setAnimation(leftAnim);
+
+        ll_add_scores[1].setAnimation(rightAnim);
+        ll_add_scores[2].setAnimation(rightAnim);
     }
 
     public boolean checkIdExistInList(List<Integer> list, int i) {
