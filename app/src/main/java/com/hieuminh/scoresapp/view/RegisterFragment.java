@@ -2,15 +2,19 @@ package com.hieuminh.scoresapp.view;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -26,7 +30,7 @@ public class RegisterFragment extends Fragment {
 
     private Button adapterLogin, register;
     private EditText et_email, et_password, et_confirmPassword;
-
+    private AppCompatCheckBox checkbox;
     private FirebaseAuth auth;
 
     @Override
@@ -83,6 +87,19 @@ public class RegisterFragment extends Fragment {
                 registerUser(email, password,view);
             }
         });
+
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    et_confirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    et_confirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
     }
 
     private void viewConnection(View view) {
@@ -91,6 +108,7 @@ public class RegisterFragment extends Fragment {
         et_email = view.findViewById(R.id.et_email);
         et_password = view.findViewById(R.id.et_password);
         et_confirmPassword = view.findViewById(R.id.et_confirm_password);
+        checkbox = view.findViewById(R.id.checkbox_register);
     }
 
     private void registerUser(String email, String password, final View view) {

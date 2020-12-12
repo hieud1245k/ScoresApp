@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.model.MatchScores;
@@ -100,9 +101,15 @@ public class AddFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                int markSum = 0;
                 int[] marks = new int[4];
                 for(int i = 0; i < marks.length; i ++) {
                     marks[i] = Integer.parseInt(playersScore[i].getText().toString());
+                    markSum += marks[i];
+                }
+                if(markSum != 6) {
+                    Toast.makeText(getActivity(), "You have not finished entering points!\nThe player's total score must be 6!", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 record.scoresMatrix.add(new MatchScores(marks));
                 reset();
@@ -116,7 +123,6 @@ public class AddFragment extends Fragment {
                 reset();
             }
         });
-
         for (int i = 0; i < ll_add_scores.length; i++) {
             final int index = i;
             ll_add_scores[i].setOnClickListener(new View.OnClickListener() {

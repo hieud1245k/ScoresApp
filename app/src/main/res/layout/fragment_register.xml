@@ -49,6 +49,13 @@
             android:textColor="@color/cardview_light_background"
             android:textColorHint="@color/cardview_light_background" />
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#576EF1"
+            android:textStyle="bold"
+            android:text="Show Password"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,17 +64,27 @@
 
             <Button
                 android:id="@+id/bt_adapter_login"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_add_fr"
+                android:text="Back"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:text="Back" />
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
 
             <Button
-                android:id="@+id/bt_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Register" />
+                android:id="@+id/bt_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_add_fr"
+                android:text="Register"
+                android:layout_marginLeft="10dp"
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
 
         </LinearLayout>
 
