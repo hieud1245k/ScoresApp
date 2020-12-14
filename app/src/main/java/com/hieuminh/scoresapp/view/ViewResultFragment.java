@@ -4,6 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,21 +21,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.dapter.MyScoreInViewResultAdapter;
-import com.hieuminh.scoresapp.model.MatchScores;
 import com.hieuminh.scoresapp.model.Records;
-
-import java.util.ArrayList;
 
 public class ViewResultFragment extends Fragment {
 
@@ -61,11 +57,11 @@ public class ViewResultFragment extends Fragment {
             record = args.getRecord();
         }
 
-        for (int i = 0; i < playersName.length; i++) {
-            playersName[i].setText(record.players[i]);
+        for (int i = 0; i < 4; i++) {
+            playersName[i].setText(record.players.get(i));
         }
 
-        myScoreInViewResultAdapter = new MyScoreInViewResultAdapter(new ArrayList<MatchScores>(record.scoresMap.values()));
+        myScoreInViewResultAdapter = new MyScoreInViewResultAdapter(record.scoresMatrix);
         recyclerView.setAdapter(myScoreInViewResultAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);

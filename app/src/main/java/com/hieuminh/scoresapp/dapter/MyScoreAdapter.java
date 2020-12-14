@@ -41,15 +41,23 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull MyScoresHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyScoresHolder holder, final int position) {
         Records record = records.get(position);
         for(int i = 0; i < 4; i++) {
-            holder.players[i].setText(record.players[i]);
+            holder.players[i].setText(record.players.get(i));
         }
-        String h = (record.startTime.hour < 10)?("" + record.startTime.hour):(record.startTime.hour + "");
-        String m = (record.startTime.min < 10)?("" + record.startTime.min):(record.startTime.min + "");
+        String h = (record.endTime.hour < 10)?("" + record.endTime.hour):(record.endTime.hour + "");
+        String m = (record.endTime.min < 10)?("" + record.endTime.min):(record.endTime.min + "");
         holder.saveDate.setText(h + ":" + m);
-//        holder.dateHistory.setText(setTime(record.time));
+        holder.dateHistory.setText(setTime(record.endTime));
+
+        holder.linearLayoutRecordScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = ListFragmentDirections.actionListFragmentToDetailFragment(records.get(position));
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     @Override
@@ -75,13 +83,6 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
             dateHistory = view.findViewById(R.id.tv_date_history);
 
             linearLayoutRecordScore = view.findViewById(R.id.ll_record_item);
-            linearLayoutRecordScore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    NavDirections action = ListFragmentDirections.actionListFragmentToDetailFragment();
-                    Navigation.findNavController(view).navigate(action);
-                }
-            });
         }
     }
 

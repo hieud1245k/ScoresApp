@@ -32,8 +32,8 @@ public class MyScoreInViewResultAdapter extends RecyclerView.Adapter<MyScoreInVi
     @Override
     public void onBindViewHolder(@NonNull MyScoreInViewResultHolder holder, int position) {
         MatchScores matchScore = arrMatchScores.get(position);
-        for(int i = 0; i < matchScore.marks.length; i++) {
-            holder.playersScore[i].setText("" + matchScore.marks[i]);
+        for(int i = 0; i < 4; i++) {
+            holder.playersScore[i].setText("" + matchScore.marks.get(i));
         }
         holder.match.setText("" + position);
     }

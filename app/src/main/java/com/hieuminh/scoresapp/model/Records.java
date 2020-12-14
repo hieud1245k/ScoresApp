@@ -15,13 +15,15 @@ public class Records implements Serializable {
 
     public Integer matchTotal = 16;
 
-    public String[] players = new String[4];
+    public List<String> players = new ArrayList<>();
 
-    public Map<String,MatchScores> scoresMap = new HashMap<>();
+    public List<MatchScores> scoresMatrix = new ArrayList<>();
 
     public Map<String, Integer> playersMap = new HashMap<>();
 
     public Time startTime = new Time();
 
     public Time endTime;
+
+    public Records(){}
 }

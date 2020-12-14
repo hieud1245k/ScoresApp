@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_detailFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="record"
+            app:argType="com.hieuminh.scoresapp.model.Records" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"

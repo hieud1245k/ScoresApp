@@ -1,75 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="0,1,2,3"
-    tools:context=".view.ScoreHistoryDetailFragment"
-    android:background="#FB9908">
+    android:background="#FB9908"
+    android:orientation="vertical"
+    tools:context=".view.ScoreHistoryDetailFragment">
 
-    <TableRow>
-
-        <Button
-            android:id="@+id/player1Show1"
-            android:enabled="false"
-            android:textColor="@android:color/black"
-            android:text="Player 1" />
-
-        <Button
-            android:id="@+id/player2Show2"
-            android:enabled="false"
-            android:textColor="@android:color/black"
-            android:text="Player 2"/>
-
-        <Button
-            android:id="@+id/player3Show3"
-            android:enabled="false"
-            android:textColor="@android:color/black"
-            android:text="Player 3"/>
-
-        <Button
-            android:id="@+id/player4Show4"
-            android:enabled="false"
-            android:textColor="@android:color/black"
-            android:text="Player 4"/>
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tabModeScore">
-
-        <TextView
-            android:id="@+id/score1"
-            android:textColor="#F8F5F5"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:text="0"/>
-
-        <TextView
-            android:id="@+id/score2"
-            android:textColor="#F8F5F5"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:text="0"/>
-
-        <TextView
-            android:id="@+id/score3"
-            android:textColor="#F8F5F5"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:text="0"/>
-
-        <TextView
-            android:id="@+id/score4"
-            android:textColor="#F8F5F5"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:text="0"/>
-
-    </TableRow>
-
-    <ListView
-        android:id="@+id/scoreList"
+    <LinearLayout
+        android:id="@+id/ll_score_history_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</TableLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <Button
+            android:id="@+id/bt_score_history_match"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#1976D2"
+            android:enabled="false"
+            android:text="Match"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/bt_score_history_player_name_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:text="Player"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bt_score_history_player_name_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:text="Player"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bt_score_history_player_name_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:text="Player"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bt_score_history_player_name_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:text="Player"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_score_history_match_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_score_history_player_score_total_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_score_history_player_score_total_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_score_history_player_score_total_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_score_history_player_score_total_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_score_history_scores_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

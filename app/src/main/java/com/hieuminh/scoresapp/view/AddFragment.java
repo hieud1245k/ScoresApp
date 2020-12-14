@@ -68,9 +68,9 @@ public class AddFragment extends Fragment {
             AddFragmentArgs args = AddFragmentArgs.fromBundle(getArguments());
             record = args.getRecord();
             for (int i = 0; i < playersName.length; i++) {
-                playersName[i].setText(record.players[i]);
+                playersName[i].setText(record.players.get(i));
             }
-            match.setText("Match: " + record.scoresMap.size());
+            match.setText("Match: " + record.scoresMatrix.size());
         }
 
     }
@@ -102,10 +102,10 @@ public class AddFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int markSum = 0;
-                int[] marks = new int[4];
-                for(int i = 0; i < marks.length; i ++) {
-                    marks[i] = Integer.parseInt(playersScore[i].getText().toString());
-                    markSum += marks[i];
+                List<Integer> marks = new ArrayList<>();
+                for(int i = 0; i < 4; i ++) {
+                    marks.add(Integer.parseInt(playersScore[i].getText().toString()));
+                    markSum += marks.get(i);
                 }
                 if(markSum != 6) {
                     Toast.makeText(getActivity(), "You have not finished entering points!\nThe player's total score must be 6!", Toast.LENGTH_LONG).show();
@@ -113,9 +113,9 @@ public class AddFragment extends Fragment {
                 }
 //                record.scoresMatrix.add(new MatchScores(marks));
                 MatchScores matchScore = new MatchScores(marks);
-                record.scoresMap.put("" + matchScore.id, matchScore);
+                record.scoresMatrix.add(matchScore);
                 reset();
-                match.setText("Match: " + record.scoresMap.size());
+                match.setText("Match: " + record.scoresMatrix.size());
             }
         });
 

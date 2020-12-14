@@ -26,7 +26,6 @@ import com.hieuminh.scoresapp.model.Records;
 import com.hieuminh.scoresapp.model.Time;
 import com.hieuminh.scoresapp.utils.SessionUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -98,14 +97,13 @@ public class CountDownFragment extends Fragment {
         Integer[] scores = new Integer[4];
         for(int i = 0; i < 4; i++)
             scores[i] = 0;
-        List<MatchScores> matchScores = new ArrayList<>(record.scoresMap.values());
-        for (MatchScores m : matchScores) {
+        for (MatchScores m : record.scoresMatrix) {
             for (int i = 0; i < 4; i++) {
-                scores[i] += m.marks[i];
+                scores[i] += m.marks.get(i);
             }
         }
         for (int i = 0; i < 4; i++) {
-            record.playersMap.put(record.players[i], scores[i]);
+            record.playersMap.put(record.players.get(i), scores[i]);
         }
         record.playersMap = sortByComparator(record.playersMap, false);
     }
@@ -132,13 +130,14 @@ public class CountDownFragment extends Fragment {
     private void saveData() {
         String userId = new SessionUtils(getActivity()).getUserId();
         record.endTime = new Time();
+        record.matchTotal = record.scoresMatrix.size();
         mData.child(userId).push().setValue(record, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 if(error == null) {
-                    Toast.makeText(getActivity(), "Lưu dữ liệu vào Firebase real-time thành công!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Data saved to Firebase real-time successfully!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getActivity(), "Lưu dữ liệu vào Firebase real-time không thành công!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Saving data to real-time Firebase failed!", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }

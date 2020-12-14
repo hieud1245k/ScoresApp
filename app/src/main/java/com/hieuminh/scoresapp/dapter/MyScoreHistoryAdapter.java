@@ -31,9 +31,9 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
     public void onBindViewHolder(@NonNull MyScoreHistoryHolder holder, int position) {
         MatchScores matchScore = matchScores.get(position);
         for(int i = 0; i < 4 ; i++) {
-            holder.playersScore[i].setText(matchScore.marks[i]);
+            holder.playersScore[i].setText("" + matchScore.marks.get(i));
         }
-        holder.match.setText(matchScore.id);
+        holder.match.setText("" + position);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
     }
 
     class MyScoreHistoryHolder extends RecyclerView.ViewHolder {
+
         public View view;
         public TextView playersScore[] = new TextView[4];
         public TextView match;
@@ -49,11 +50,10 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
             super(itemView);
             this.view = itemView;
 
-            playersScore[0] = view.findViewById(R.id.tv_player0_score_history);
-            playersScore[1] = view.findViewById(R.id.tv_player1_score_history);
-            playersScore[2] = view.findViewById(R.id.tv_player2_score_history);
-            playersScore[3] = view.findViewById(R.id.tv_player3_score_history);
-
+            playersScore[0] = view.findViewById(R.id.tv_score_history_player_score_0);
+            playersScore[1] = view.findViewById(R.id.tv_score_history_player_score_1);
+            playersScore[2] = view.findViewById(R.id.tv_score_history_player_score_2);
+            playersScore[3] = view.findViewById(R.id.tv_score_history_player_score_3);
             match = view.findViewById(R.id.tv_match_score_history);
         }
     }

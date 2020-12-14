@@ -16,10 +16,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.dapter.MyScoreAdapter;
 import com.hieuminh.scoresapp.model.Records;
+import com.hieuminh.scoresapp.utils.SessionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,24 +52,31 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerView = view.findViewById(R.id.rv_score);
-        imageView = view.findViewById(R.id.iv_add);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(null));
-
+        mData = FirebaseDatabase.getInstance().getReference();
         records = new ArrayList<>();
-        Records records1 = new Records();
-        records1.players = new String[]{"Hieu", "Minh", "Nguyen", "Phuc"};
-        records1.matchTotal = 21;
+        viewConnection(view);
 
-        records.add(records1);
-        records.add(records1);
+        String userId = new SessionUtils(getActivity()).getUserId();
 
-        myScoreAdapter = new MyScoreAdapter(records);
+        mData.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    Records record =   ds.getValue(Records.class);
+                    records.add(record);
+                }
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(null));
+                myScoreAdapter = new MyScoreAdapter(records);
+                recyclerView.setAdapter(myScoreAdapter);
+                myScoreAdapter.notifyDataSetChanged();
+            }
 
-        recyclerView.setAdapter(myScoreAdapter);
-        myScoreAdapter.notifyDataSetChanged();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,5 +85,10 @@ public class ListFragment extends Fragment {
                 Navigation.findNavController(view).navigate(action);
             }
         });
+    }
+
+    private void viewConnection(View view) {
+        recyclerView = view.findViewById(R.id.rv_score);
+        imageView = view.findViewById(R.id.iv_add);
     }
 }

@@ -73,7 +73,7 @@ public class AddInforFragment extends Fragment {
                     }
                 }
                 for(int i = 0; i < playersName.length;  i++) {
-                    record.players[i] = playersName[i].getText().toString();
+                    record.players.add(playersName[i].getText().toString());
                 }
 
                 NavDirections action = AddInforFragmentDirections.actionAddInforFragmentToAddFragment(record);
