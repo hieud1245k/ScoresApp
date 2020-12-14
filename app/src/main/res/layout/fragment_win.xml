@@ -147,4 +147,19 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bt_win_return_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_win_bar"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="48dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_add_fr"
+        android:text="Return main"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+
 </RelativeLayout>

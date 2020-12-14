@@ -26,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hieuminh.scoresapp.R;
+import com.hieuminh.scoresapp.utils.SessionUtils;
 
 public class LoginFragment extends Fragment {
 
@@ -76,8 +77,6 @@ public class LoginFragment extends Fragment {
                     return;
                 }
                 AllowUserToLogin(gmail,password,view);
-//                NavDirections action = LoginFragmentDirections.actionLoginFragment2ToListFragment();
-//                Navigation.findNavController(view).navigate(action);
             }
         });
 
@@ -107,10 +106,12 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            String userId = mAuth.getCurrentUser().getUid();
+                            new SessionUtils(getActivity()).setUserId(userId);
                             NavDirections action = LoginFragmentDirections.actionLoginFragment2ToListFragment();
                             Navigation.findNavController(view).navigate(action);
                         } else {
-                            Toast.makeText(getActivity(),"Login failed!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(),"Gmail or password is incorrect!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

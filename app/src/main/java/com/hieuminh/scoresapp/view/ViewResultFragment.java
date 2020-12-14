@@ -25,7 +25,10 @@ import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.dapter.MyScoreInViewResultAdapter;
+import com.hieuminh.scoresapp.model.MatchScores;
 import com.hieuminh.scoresapp.model.Records;
+
+import java.util.ArrayList;
 
 public class ViewResultFragment extends Fragment {
 
@@ -62,7 +65,7 @@ public class ViewResultFragment extends Fragment {
             playersName[i].setText(record.players[i]);
         }
 
-        myScoreInViewResultAdapter = new MyScoreInViewResultAdapter(record.scoresMatrix);
+        myScoreInViewResultAdapter = new MyScoreInViewResultAdapter(new ArrayList<MatchScores>(record.scoresMap.values()));
         recyclerView.setAdapter(myScoreInViewResultAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);

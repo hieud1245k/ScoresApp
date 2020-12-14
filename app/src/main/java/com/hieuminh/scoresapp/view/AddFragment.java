@@ -70,7 +70,7 @@ public class AddFragment extends Fragment {
             for (int i = 0; i < playersName.length; i++) {
                 playersName[i].setText(record.players[i]);
             }
-            match.setText("Match: " + record.scoresMatrix.size());
+            match.setText("Match: " + record.scoresMap.size());
         }
 
     }
@@ -111,9 +111,11 @@ public class AddFragment extends Fragment {
                     Toast.makeText(getActivity(), "You have not finished entering points!\nThe player's total score must be 6!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                record.scoresMatrix.add(new MatchScores(marks));
+//                record.scoresMatrix.add(new MatchScores(marks));
+                MatchScores matchScore = new MatchScores(marks);
+                record.scoresMap.put("" + matchScore.id, matchScore);
                 reset();
-                match.setText("Match: " + record.scoresMatrix.size());
+                match.setText("Match: " + record.scoresMap.size());
             }
         });
 

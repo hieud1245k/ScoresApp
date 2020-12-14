@@ -7,12 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,8 +28,9 @@ public class WinFragment extends Fragment {
     private TextView playersScore[] = new TextView[4];
     private TextView playersName[] = new TextView[4];
     private LinearLayout ll_players[] = new LinearLayout[4];
-    private Animation topAnim, bottomAnim;
+    private Animation topAnim, bottomAnim , bottomAnimSlow;
     private Records record;
+    private Button returnMain;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,17 @@ public class WinFragment extends Fragment {
             record = args.getRecord();
         }
         for(int i = 0; i < 4; i++) {
-            playersName[i].setText(record.players[(int) record.playersMap.keySet().toArray()[i]]);
+            playersName[i].setText("" + record.playersMap.keySet().toArray()[i]);
             playersScore[i].setText("" + record.playersMap.values().toArray()[i]);
         }
+
+        returnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = WinFragmentDirections.actionWinFragmentToListFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     public void viewConnection(View view) {
@@ -73,17 +85,22 @@ public class WinFragment extends Fragment {
         playersScore[2] = view.findViewById(R.id.tv_win_player_score_2);
         playersScore[3] = view.findViewById(R.id.tv_win_player_score_3);
 
+        returnMain = view.findViewById(R.id.bt_win_return_main);
+
         title = view.findViewById(R.id.tv_win_title);
     }
 
     public void setAnimation() {
         topAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_animation);
+        bottomAnimSlow = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_animation_slow);
 
         title.setAnimation(topAnim);
 
         for(LinearLayout l : ll_players) {
             l.setAnimation(bottomAnim);
         }
+
+        returnMain.setAnimation(bottomAnimSlow);
     }
 }

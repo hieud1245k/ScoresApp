@@ -13,13 +13,13 @@ import java.util.Map;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Records implements Serializable {
 
-    public int matchTotal = 16;
+    public Integer matchTotal = 16;
 
     public String[] players = new String[4];
 
-    public List<MatchScores> scoresMatrix = new ArrayList<>();
+    public Map<String,MatchScores> scoresMap = new HashMap<>();
 
-    public Map<Integer, Integer> playersMap = new HashMap<>();
+    public Map<String, Integer> playersMap = new HashMap<>();
 
     public Time startTime = new Time();
 

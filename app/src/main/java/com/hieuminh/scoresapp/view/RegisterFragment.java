@@ -25,6 +25,7 @@ import com.google.android.play.core.internal.au;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hieuminh.scoresapp.R;
+import com.hieuminh.scoresapp.utils.SessionUtils;
 
 public class RegisterFragment extends Fragment {
 
@@ -118,12 +119,14 @@ public class RegisterFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
+                                String userId = auth.getCurrentUser().getUid();
+                                new SessionUtils(getActivity()).setUserId(userId);
                                 Toast.makeText(getActivity(),"Register successful!",Toast.LENGTH_SHORT).show();
                                 NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToListFragment();
                                 Navigation.findNavController(view).navigate(action);
                             }
                             else {
-                                Toast.makeText(getActivity(),"Register failed!",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(),"Register failed!\nPlease check gmail and password again!",Toast.LENGTH_LONG).show();
                                 return;
                             }
                         }
