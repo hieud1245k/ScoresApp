@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FB9908"
     android:orientation="vertical"
     tools:context=".view.ScoreHistoryDetailFragment">
 
@@ -75,6 +74,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:background="#1976D2"
             android:layout_height="wrap_content">
 
             <TextView

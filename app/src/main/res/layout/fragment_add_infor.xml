@@ -34,7 +34,7 @@
             android:layout_marginBottom="15dp"
             android:hint="Player name 1"
             android:text="Hieu"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:textColor="@android:color/primary_text_light" />
 
         <EditText
             android:id="@+id/tv_name_add_player_name_1"
@@ -43,7 +43,7 @@
             android:layout_marginBottom="15dp"
             android:hint="Player name 2"
             android:text="Phuc"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:textColor="@android:color/primary_text_light" />
 
         <EditText
             android:id="@+id/tv_name_add_player_name_2"
@@ -52,7 +52,7 @@
             android:layout_marginBottom="15dp"
             android:hint="Player name 3"
             android:text="Nguyen"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:textColor="@android:color/primary_text_light"/>
 
         <EditText
             android:id="@+id/tv_name_add_player_name_3"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:hint="Player name 4"
             android:text="Minh"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:textColor="@android:color/primary_text_light"/>
 
     </LinearLayout>
 
