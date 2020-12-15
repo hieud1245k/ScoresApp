@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/file"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="title" >
+        <menu>
+            <item android:id="@+id/action_view_infor"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="User manual" />
+            <item android:id="@+id/action_logout"
+                android:title="logout" />
+        </menu>
+    </item>
+</menu>

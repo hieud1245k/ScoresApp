@@ -2,5 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
+        <item>@font/aguafina_script</item>
+        <item>@font/archivo_black</item>
+        <item>@font/asset</item>
     </array>
 </resources>

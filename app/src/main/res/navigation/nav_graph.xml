@@ -27,6 +27,12 @@
         <action
             android:id="@+id/action_listFragment_to_addInforFragment"
             app:destination="@id/addInforFragment" />
+        <action
+            android:id="@+id/action_listFragment_self"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"

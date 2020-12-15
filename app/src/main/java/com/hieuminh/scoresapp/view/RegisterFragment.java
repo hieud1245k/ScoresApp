@@ -1,5 +1,7 @@
 package com.hieuminh.scoresapp.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -22,14 +24,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.hieuminh.scoresapp.R;
-import com.hieuminh.scoresapp.utils.SessionUtils;
+import com.hieuminh.scoresapp.utils.OnEmailCheckListener;
+import com.hieuminh.scoresapp.utils.SessionUtil;
 
 public class RegisterFragment extends Fragment {
 
     private Button adapterLogin, register;
     private EditText et_email, et_password, et_confirmPassword;
-    private AppCompatCheckBox checkbox;
+    private AppCompatCheckBox checkBox_showPassword, checkBox_rememberMe;
     private FirebaseAuth auth;
 
     @Override
@@ -60,9 +64,9 @@ public class RegisterFragment extends Fragment {
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String email = et_email.getText().toString().trim();
-                String password = et_password.getText().toString().trim();
+            public void onClick(final View view) {
+                final String email = et_email.getText().toString().trim();
+                final String password = et_password.getText().toString().trim();
                 String confirmPassword = et_confirmPassword.getText().toString().trim();
 
                 if(email.equals("")) {
@@ -83,11 +87,21 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getActivity(),"Password and confirmation password do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                registerUser(email, password,view);
+                isCheckEmail(email, new OnEmailCheckListener() {
+                    @Override
+                    public void onSuccess(boolean isRegistered) {
+                        if(isRegistered) {
+                            Toast.makeText(getContext(), "email is already in use", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            registerUser(email, password,view);
+                        }
+                    }
+                });
             }
         });
 
-        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b) {
@@ -99,6 +113,25 @@ public class RegisterFragment extends Fragment {
                 }
             }
         });
+
+        checkBox_rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()) {
+                    SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                    Toast.makeText(getContext(), "Checked", Toast.LENGTH_SHORT).show();
+                } else if(!compoundButton.isChecked()) {
+                    SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                    Toast.makeText(getContext(), "Unchecked", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void viewConnection(View view) {
@@ -107,7 +140,8 @@ public class RegisterFragment extends Fragment {
         et_email = view.findViewById(R.id.et_email);
         et_password = view.findViewById(R.id.et_password);
         et_confirmPassword = view.findViewById(R.id.et_confirm_password);
-        checkbox = view.findViewById(R.id.checkbox_register);
+        checkBox_showPassword = view.findViewById(R.id.checkbox_show_password_register);
+        checkBox_rememberMe = view.findViewById(R.id.checkbox_remember_me_register);
     }
 
     private void registerUser(String email, String password, final View view) {
@@ -118,7 +152,7 @@ public class RegisterFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 String userId = auth.getCurrentUser().getUid();
-                                new SessionUtils(getActivity()).setUserId(userId);
+                                new SessionUtil(getActivity()).setUserId(userId);
                                 Toast.makeText(getActivity(),"Register successful!",Toast.LENGTH_SHORT).show();
                                 NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToListFragment();
                                 Navigation.findNavController(view).navigate(action);
@@ -133,5 +167,15 @@ public class RegisterFragment extends Fragment {
             e.printStackTrace();
             return;
         }
+    }
+
+    public void isCheckEmail(final String email, final OnEmailCheckListener listener) {
+        auth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+            @Override
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                boolean check = !task.getResult().getSignInMethods().isEmpty();
+                listener.onSuccess(check);
+            }
+        });
     }
 }
