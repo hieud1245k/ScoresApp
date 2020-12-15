@@ -18,12 +18,14 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.dapter.MyScoreInViewResultAdapter;
+import com.hieuminh.scoresapp.model.MatchScores;
 import com.hieuminh.scoresapp.model.Records;
 
 public class ViewResultFragment extends Fragment {
@@ -65,6 +67,7 @@ public class ViewResultFragment extends Fragment {
         recyclerView.setAdapter(myScoreInViewResultAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView);
     }
 
     @Override
@@ -115,5 +118,24 @@ public class ViewResultFragment extends Fragment {
                 Navigation.findNavController(view).navigate(action);
             }
         });
+    }
+
+    public ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            deleteNote(record.scoresMatrix.get(viewHolder.getAdapterPosition()));
+        }
+    };
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void deleteNote(MatchScores matchScore) {
+        record.scoresMatrix.remove(matchScore);
+        myScoreInViewResultAdapter.notifyDataSetChanged();
     }
 }

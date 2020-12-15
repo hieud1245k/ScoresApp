@@ -24,7 +24,7 @@ import com.hieuminh.scoresapp.R;
 import com.hieuminh.scoresapp.model.MatchScores;
 import com.hieuminh.scoresapp.model.Records;
 import com.hieuminh.scoresapp.model.Time;
-import com.hieuminh.scoresapp.utils.SessionUtils;
+import com.hieuminh.scoresapp.utils.SessionUtil;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -128,7 +128,7 @@ public class CountDownFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void saveData() {
-        String userId = new SessionUtils(getActivity()).getUserId();
+        String userId = new SessionUtil(getActivity()).getUserId();
         record.endTime = new Time();
         record.matchTotal = record.scoresMatrix.size();
         mData.child(userId).push().setValue(record, new DatabaseReference.CompletionListener() {

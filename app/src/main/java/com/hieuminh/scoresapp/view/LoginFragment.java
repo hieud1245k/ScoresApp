@@ -1,5 +1,7 @@
 package com.hieuminh.scoresapp.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hieuminh.scoresapp.R;
-import com.hieuminh.scoresapp.utils.SessionUtils;
+import com.hieuminh.scoresapp.utils.SessionUtil;
 
 public class LoginFragment extends Fragment {
 
@@ -34,7 +35,7 @@ public class LoginFragment extends Fragment {
     private EditText et_gmail, et_password;
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
-    private AppCompatCheckBox checkbox;
+    private AppCompatCheckBox checkBox_showPassword, checkBox_rememberMe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b) {
@@ -90,6 +91,34 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
+        checkBox_rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()) {
+                    SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                    Toast.makeText(getContext(), "Checked", Toast.LENGTH_SHORT).show();
+                } else if(!compoundButton.isChecked()) {
+                    SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                    Toast.makeText(getContext(), "Unchecked", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+        String checkbox = preferences.getString("remember","");
+        if(checkbox.equals("true")) {
+            NavDirections action = LoginFragmentDirections.actionLoginFragment2ToListFragment();
+            Navigation.findNavController(view).navigate(action);
+        } else if(checkbox.equals("false")) {
+            Toast.makeText(getActivity(),"Please sign in!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void viewConnection(View view) {
@@ -97,7 +126,8 @@ public class LoginFragment extends Fragment {
         adapterRegistration = view.findViewById(R.id.bt_adapter_registration);
         et_gmail = view.findViewById(R.id.tv_gmail_login);
         et_password = view.findViewById(R.id.tv_password_login);
-        checkbox = view.findViewById(R.id.checkbox);
+        checkBox_showPassword = view.findViewById(R.id.checkbox_show_password);
+        checkBox_rememberMe = view.findViewById(R.id.checkbox_remember_me);
     }
 
     private void AllowUserToLogin(String gmail,String password,final View view) {
@@ -107,7 +137,7 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             String userId = mAuth.getCurrentUser().getUid();
-                            new SessionUtils(getActivity()).setUserId(userId);
+                            new SessionUtil(getActivity()).setUserId(userId);
                             NavDirections action = LoginFragmentDirections.actionLoginFragment2ToListFragment();
                             Navigation.findNavController(view).navigate(action);
                         } else {

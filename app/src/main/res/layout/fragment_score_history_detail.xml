@@ -11,8 +11,8 @@
         android:id="@+id/ll_score_history_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
+        android:background="@color/colorAccent"
         android:weightSum="5">
 
         <Button
@@ -68,19 +68,29 @@
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_score_history_match_total"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="30dp" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:background="@drawable/border_view_result_item"
+                android:id="@+id/tv_score_history_match_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+        </LinearLayout>
 
         <TextView
+            android:background="@drawable/border_view_result_item"
             android:id="@+id/tv_score_history_player_score_total_0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +100,7 @@
             android:textSize="30dp" />
 
         <TextView
+            android:background="@drawable/border_view_result_item"
             android:id="@+id/tv_score_history_player_score_total_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,6 +110,7 @@
             android:textSize="30dp" />
 
         <TextView
+            android:background="@drawable/border_view_result_item"
             android:id="@+id/tv_score_history_player_score_total_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,6 +120,7 @@
             android:textSize="30dp" />
 
         <TextView
+            android:background="@drawable/border_view_result_item"
             android:id="@+id/tv_score_history_player_score_total_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
