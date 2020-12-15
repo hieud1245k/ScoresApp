@@ -4,7 +4,7 @@
 +password:12801999
 ![login](https://github.com/hieud1245k/ScoresApp/blob/%E1%BA%A3nh/131432557_3390205647772315_5607481777579275569_n.jpg)
 Nếu chưa có tài khoản, người dùng có thể đăng kí tài khoản với email và password
-![register](https://github.com/hieud1245k/ScoresApp/blob/%E1%BA%A3nh/131432557_3390205647772315_5607481777579275569_n%20(1).jpg)
+![register](https://github.com/hieud1245k/ScoresApp/blob/%E1%BA%A3nh/130972627_2991482207741467_2039347650227339859_n.jpg)
 Sau khi đăng nhập hay đăng kí thành công, người dùng sẽ được chuyển đến trang MyScores History
 ![scoreHistory](https://github.com/hieud1245k/ScoresApp/blob/%E1%BA%A3nh/131350074_1088984164867073_5374431300999817108_n.jpg)
 
