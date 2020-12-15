@@ -41,7 +41,6 @@ public class WinFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_win, container, false);
     }
 
@@ -100,7 +99,6 @@ public class WinFragment extends Fragment {
         for(LinearLayout l : ll_players) {
             l.setAnimation(bottomAnim);
         }
-
         returnMain.setAnimation(bottomAnimSlow);
     }
 }

@@ -35,7 +35,7 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
     @NonNull
     @Override
     public MyScoresHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyScoresHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_score,parent,false));
+        return new MyScoresHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_score, parent, false));
     }
 
     @SuppressLint("SetTextI18n")
@@ -43,11 +43,11 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
     @Override
     public void onBindViewHolder(@NonNull MyScoresHolder holder, final int position) {
         Records record = records.get(position);
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             holder.players[i].setText(record.players.get(i));
         }
-        String h = (record.endTime.hour < 10)?("" + record.endTime.hour):(record.endTime.hour + "");
-        String m = (record.endTime.min < 10)?("" + record.endTime.min):(record.endTime.min + "");
+        String h = (record.endTime.hour < 10) ? ("" + record.endTime.hour) : (record.endTime.hour + "");
+        String m = (record.endTime.min < 10) ? ("" + record.endTime.min) : (record.endTime.min + "");
         holder.saveDate.setText(h + ":" + m);
         holder.dateHistory.setText(setTime(record.endTime));
 
@@ -70,6 +70,7 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
         public TextView players[] = new TextView[4];
         public TextView saveDate, dateHistory;
         public LinearLayout linearLayoutRecordScore;
+
         public MyScoresHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
@@ -88,15 +89,15 @@ public class MyScoreAdapter extends RecyclerView.Adapter<MyScoreAdapter.MyScores
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String setTime(Time time) {
-        if(time.month != LocalDate.now().getMonthValue()) {
+        if (time.month != LocalDate.now().getMonthValue()) {
             return LocalDate.now().getMonthValue() - time.month + " month ago";
-        } else if(time.day != LocalDate.now().getDayOfMonth()) {
+        } else if (time.day != LocalDate.now().getDayOfMonth()) {
             return LocalDate.now().getDayOfMonth() - time.day + " day ago";
-        } else if(time.hour != LocalTime.now().getHour()) {
+        } else if (time.hour != LocalTime.now().getHour()) {
             return LocalTime.now().getHour() - time.hour + " hour ago";
-        } else if(time.min != LocalTime.now().getMinute()) {
+        } else if (time.min != LocalTime.now().getMinute()) {
             return LocalTime.now().getMinute() - time.min + " minute ago";
-        } else if(time.second != LocalTime.now().getSecond()) {
+        } else if (time.second != LocalTime.now().getSecond()) {
             return LocalTime.now().getSecond() - time.second + " second ago";
         }
         return null;

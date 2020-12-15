@@ -26,13 +26,13 @@ public class MyScoreInViewResultAdapter extends RecyclerView.Adapter<MyScoreInVi
     @NonNull
     @Override
     public MyScoreInViewResultHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyScoreInViewResultAdapter.MyScoreInViewResultHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_result,parent,false));
+        return new MyScoreInViewResultAdapter.MyScoreInViewResultHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_result, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyScoreInViewResultHolder holder, int position) {
         MatchScores matchScore = arrMatchScores.get(position);
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             holder.playersScore[i].setText("" + matchScore.marks.get(i));
         }
         holder.match.setText("" + position);
@@ -47,6 +47,7 @@ public class MyScoreInViewResultAdapter extends RecyclerView.Adapter<MyScoreInVi
         public TextView playersScore[] = new TextView[4];
         public View view;
         public TextView match;
+
         public MyScoreInViewResultHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;

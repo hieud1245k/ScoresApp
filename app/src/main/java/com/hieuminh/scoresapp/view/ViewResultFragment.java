@@ -58,7 +58,6 @@ public class ViewResultFragment extends Fragment {
             ViewResultFragmentArgs args = ViewResultFragmentArgs.fromBundle(getArguments());
             record = args.getRecord();
         }
-
         for (int i = 0; i < 4; i++) {
             playersName[i].setText(record.players.get(i));
         }

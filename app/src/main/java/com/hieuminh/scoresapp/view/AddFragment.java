@@ -103,11 +103,11 @@ public class AddFragment extends Fragment {
             public void onClick(View view) {
                 int markSum = 0;
                 List<Integer> marks = new ArrayList<>();
-                for(int i = 0; i < 4; i ++) {
+                for (int i = 0; i < 4; i++) {
                     marks.add(Integer.parseInt(playersScore[i].getText().toString()));
                     markSum += marks.get(i);
                 }
-                if(markSum != 6) {
+                if (markSum != 6) {
                     Toast.makeText(getActivity(), "You have not finished entering points!\nThe player's total score must be 6!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -134,7 +134,7 @@ public class AddFragment extends Fragment {
                     indexs.add(index);
                     mark--;
                     for (int j = 0; j < playersScore.length; j++) {
-                        if (!checkIdExistInList(indexs,j)) {
+                        if (!checkIdExistInList(indexs, j)) {
                             playersScore[j].setText("" + mark);
                         }
                     }
@@ -145,7 +145,7 @@ public class AddFragment extends Fragment {
 
     public void animation() {
         topAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.top_animation);
-        leftAnim = AnimationUtils.loadAnimation(getActivity() , R.anim.left_animation);
+        leftAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.left_animation);
         rightAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.right_animation);
         bottomAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_animation);
 

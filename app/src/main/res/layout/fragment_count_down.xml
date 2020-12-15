@@ -13,9 +13,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/aclonica"
-        android:text="COUNT DOWN"
+        android:text="RESULT CALCULATION"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <Button

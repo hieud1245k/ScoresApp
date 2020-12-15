@@ -73,8 +73,6 @@
                     android:text="3"
                     android:textAlignment="center"
                     android:textSize="30sp" />
-
-
             </LinearLayout>
 
             <LinearLayout

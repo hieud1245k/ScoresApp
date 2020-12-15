@@ -69,32 +69,32 @@ public class RegisterFragment extends Fragment {
                 final String password = et_password.getText().toString().trim();
                 String confirmPassword = et_confirmPassword.getText().toString().trim();
 
-                if(email.equals("")) {
-                    Toast.makeText(getActivity(),"Gmail is not blank!", Toast.LENGTH_SHORT).show();
+                if (email.equals("")) {
+                    Toast.makeText(getActivity(), "Gmail is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(password.equals("")) {
-                    Toast.makeText(getActivity(),"Password is not blank!", Toast.LENGTH_SHORT).show();
+                if (password.equals("")) {
+                    Toast.makeText(getActivity(), "Password is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(confirmPassword.equals("")) {
-                    Toast.makeText(getActivity(),"Confirmation password is not blank!", Toast.LENGTH_SHORT).show();
+                if (confirmPassword.equals("")) {
+                    Toast.makeText(getActivity(), "Confirmation password is not blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!password.equals(confirmPassword)) {
-                    Toast.makeText(getActivity(),"Password and confirmation password do not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Password and confirmation password do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 isCheckEmail(email, new OnEmailCheckListener() {
                     @Override
                     public void onSuccess(boolean isRegistered) {
-                        if(isRegistered) {
+                        if (isRegistered) {
                             Toast.makeText(getContext(), "email is already in use", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            registerUser(email, password,view);
+                            registerUser(email, password, view);
                         }
                     }
                 });
@@ -104,7 +104,7 @@ public class RegisterFragment extends Fragment {
         checkBox_showPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) {
+                if (b) {
                     et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     et_confirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 } else {
@@ -117,13 +117,13 @@ public class RegisterFragment extends Fragment {
         checkBox_rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(compoundButton.isChecked()) {
+                if (compoundButton.isChecked()) {
                     SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("remember", "true");
                     editor.apply();
                     Toast.makeText(getContext(), "Checked", Toast.LENGTH_SHORT).show();
-                } else if(!compoundButton.isChecked()) {
+                } else if (!compoundButton.isChecked()) {
                     SharedPreferences preferences = getContext().getSharedPreferences("checkbox", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("remember", "false");
@@ -146,19 +146,18 @@ public class RegisterFragment extends Fragment {
 
     private void registerUser(String email, String password, final View view) {
         try {
-            auth.createUserWithEmailAndPassword(email,password)
+            auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 String userId = auth.getCurrentUser().getUid();
                                 new SessionUtil(getActivity()).setUserId(userId);
-                                Toast.makeText(getActivity(),"Register successful!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Register successful!", Toast.LENGTH_SHORT).show();
                                 NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToListFragment();
                                 Navigation.findNavController(view).navigate(action);
-                            }
-                            else {
-                                Toast.makeText(getActivity(),"Register failed!\nPlease check gmail and password again!",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Register failed!\nPlease check gmail and password again!", Toast.LENGTH_LONG).show();
                                 return;
                             }
                         }

@@ -24,13 +24,13 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
     @NonNull
     @Override
     public MyScoreHistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyScoreHistoryAdapter.MyScoreHistoryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_score_history,parent,false));
+        return new MyScoreHistoryAdapter.MyScoreHistoryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_score_history, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyScoreHistoryHolder holder, int position) {
         MatchScores matchScore = matchScores.get(position);
-        for(int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 4; i++) {
             holder.playersScore[i].setText("" + matchScore.marks.get(i));
         }
         holder.match.setText("" + position);
@@ -46,6 +46,7 @@ public class MyScoreHistoryAdapter extends RecyclerView.Adapter<MyScoreHistoryAd
         public View view;
         public TextView playersScore[] = new TextView[4];
         public TextView match;
+
         public MyScoreHistoryHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
